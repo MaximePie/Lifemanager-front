@@ -5,8 +5,7 @@ import Navbar from "./components/molecules/Navbar"
 import React, {createContext} from "react";
 import {BrowserRouter, Routes, Route}  from "react-router-dom"
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://127.0.0.1:4001";
-const socket = socketIOClient(ENDPOINT);
+const socket = socketIOClient(process.env.REACT_APP_BASE_URL);
 
 export const socketContext = createContext(socket);
 
