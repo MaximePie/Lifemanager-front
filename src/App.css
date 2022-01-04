@@ -1,3 +1,17 @@
+.ShoppingList__product {
+  margin: 1em;
+  border-bottom: 1px solid #61dafb;
+}
+
+.ShoppingList__product--isOK {
+  color: green;
+  font-weight: bold;
+}
+
+.ShoppingList__delete-all {
+  background-color: red;
+}
+
 .App {
   text-align: center;
 }
