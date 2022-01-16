@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 export default function InputGroup({onChange, value, label, type}) {
   return (
@@ -7,7 +7,7 @@ export default function InputGroup({onChange, value, label, type}) {
         {label}
       </label>
       <input
-        type="text"
+        type={type}
         onChange={onChange}
         value={value}
         className="InputGroup__input"

@@ -19,14 +19,20 @@ export default function NewProductForm() {
       />
 
       <InputGroup
-        onChange={(event) => setNewArticleQuantity(parseInt(event.target.value))}
+        onChange={(event) => handleNewArticleQuantity(event)}
         value={newArticleQuantity}
         type="text"
         label="Quantité"
       />
-      <button className="NewProductForm__saveButton" onClick={save}>Save</button>
+      <button className="NewProductForm__saveButton" onClick={save}>Enregistrer</button>
     </div>
   )
+
+  function handleNewArticleQuantity(event) {
+    const newQuantity = parseInt(event.target.value);
+
+    setNewArticleQuantity(isNaN(newQuantity) ? '' : newQuantity);
+  }
 
 
   function save() {
