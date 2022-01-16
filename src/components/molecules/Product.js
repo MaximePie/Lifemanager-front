@@ -6,7 +6,7 @@ export default function Product({product, onUpdate, onDelete}) {
 
   return (
     <div className={`Product ${isOK && 'Product--isOK'}`}>
-      <button onClick={() => {onDelete(productId)}}>🗑️</button>
+      <button className="Product__button" onClick={() => {onDelete(productId)}}>🗑️</button>
       <p className="Product__quantity">{quantity}</p>
       <p className="Product__name">{name}</p>
       <input
