@@ -3,11 +3,8 @@ export default function ShoppingListHeader({onDeleteAll, onUnCheckAll}) {
     <div className="ShoppingListHeader">
       <h4>
         Shopping List
-        <button className="ShoppingList__delete-all" onClick={onDeleteAll}>
-          Supprimer tout
-        </button>
-        <button className="ShoppingList__uncheck-all" onClick={onUnCheckAll}>
-          Décocher tout
+        <button className="ShoppingListHeader__uncheck-all" onClick={onUnCheckAll}>
+          Décocher
         </button>
       </h4>
     </div>

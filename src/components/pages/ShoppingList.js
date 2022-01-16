@@ -18,7 +18,7 @@ export default function ShoppingList() {
 
   return (
     <div className="ShoppingList">
-      <ShoppingListHeader onDeleteAll={deleteAllProducts} onUnCheckAll={unCheckAll}/>
+      <ShoppingListHeader onUnCheckAll={unCheckAll}/>
       <NewProductForm/>
       {sortedArticles().map((product, index) => (
         <Product
