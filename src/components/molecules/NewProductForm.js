@@ -1,33 +1,30 @@
 import React, {useState} from "react";
 import {postOnServer} from "../../server";
+import InputGroup from "../atoms/InputGroup";
 
-export default function NewProductForm({}) {
+export default function NewProductForm() {
 
   const [newArticleName, setNewArticleName] = useState('');
   const [newArticleQuantity, setNewArticleQuantity] = useState(1);
 
   return (
-    <div>
+    <div className="NewProductForm">
+      <h4>Ajouter un article</h4>
 
-      <label>
-        Name
-        <input
-          type="text"
-          onChange={(event) => setNewArticleName(event.target.value)}
-          value={newArticleName}
-        />
-      </label>
+      <InputGroup
+        onChange={(event) => setNewArticleName(event.target.value)}
+        value={newArticleName}
+        type="text"
+        label="Nom"
+      />
 
-      <label>
-        Quantity
-        <input
-          type="text"
-          onChange={(event) => setNewArticleQuantity(parseInt(event.target.value))}
-          value={newArticleQuantity}
-        />
-      </label>
-
-      <button onClick={save}>Save</button>
+      <InputGroup
+        onChange={(event) => setNewArticleQuantity(parseInt(event.target.value))}
+        value={newArticleQuantity}
+        type="text"
+        label="Quantité"
+      />
+      <button className="NewProductForm__saveButton" onClick={save}>Save</button>
     </div>
   )
 

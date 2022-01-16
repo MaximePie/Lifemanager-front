@@ -3,6 +3,7 @@ import {socketContext} from "../../App";
 import {getFromServer, postOnServer} from "../../server";
 import Product from "../molecules/Product"
 import NewProductForm from "../molecules/NewProductForm"
+import ShoppingListHeader from "../molecules/ShoppingListHeader"
 
 export default function ShoppingList() {
 
@@ -17,6 +18,9 @@ export default function ShoppingList() {
 
   return (
     <div className="ShoppingList">
+      <ShoppingListHeader>
+
+      </ShoppingListHeader>
       <h4>
         Shopping List
         <button className="ShoppingList__delete-all" onClick={deleteAllProducts}>
@@ -28,7 +32,7 @@ export default function ShoppingList() {
       </h4>
 
       <NewProductForm/>
-      {articles.map((product, index) => (
+      {sortedArticles().map((product, index) => (
         <Product
           product={product}
           key={index}
@@ -38,6 +42,15 @@ export default function ShoppingList() {
       ))}
     </div>
   );
+
+  /**
+   * Sort the articles in the articles state
+   * and return it.
+   * Sorting by : isOK
+   */
+  function sortedArticles() {
+    return articles.sort((article1) => !article1.isOK && -1)
+  }
 
   function fetchArticles() {
     getFromServer("/products").then(({data}) => {
