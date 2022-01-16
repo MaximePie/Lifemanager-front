@@ -6,6 +6,7 @@ export default function NewEventForm() {
 
   const [newEvent, setNewEvent] = useState("");
   const [participants, setParticipants] = useState("");
+  const [details, setDetails] = useState("");
 
   return (
     <div className="NewEventForm">
@@ -22,14 +23,21 @@ export default function NewEventForm() {
         onChange={(event) => setParticipants(event.target.value)}
         type={"text"}
       />
+      <InputGroup
+        value={details}
+        label={"Détails"}
+        onChange={(event) => setDetails(event.target.value)}
+        type={"text"}
+      />
       <button onClick={save}>Enregistrer</button>
     </div>
-  )
+  );
 
   function save() {
     postOnServer('/event', {
       participants,
       event: newEvent,
+      details,
     })
       .then(() => {
         console.log("Event Saved");
