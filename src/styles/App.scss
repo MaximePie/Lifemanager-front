@@ -1,14 +1,13 @@
 $successColor: #b3ffb5;
 $dangerColor: #ffaba3;
+$primaryColor: #6ccdfb;
 
 @import "pages/ShoppingList";
 @import "molecules/NewProductForm";
 @import "molecules/Product";
 @import "molecules/Task";
 @import "molecules/NewTaskForm";
+@import "molecules/NavBar";
 @import "atoms/InputGroup";
 @import "atoms/ShoppingListHeader";
 
-.App {
-  text-align: center;
-}

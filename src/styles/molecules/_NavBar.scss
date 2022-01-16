@@ -1,0 +1,16 @@
+.NavBar {
+  padding: 0.5em;
+  background-color: $primaryColor;
+
+  &__link {
+    margin: 0 .25em;
+    color: white;
+    text-decoration: none;
+    padding: 0.25em;
+  }
+
+  .active {
+    background-color: #9BE7FB;
+    border-radius: 100px;
+  }
+}

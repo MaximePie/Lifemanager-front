@@ -1,7 +1,7 @@
 import './styles/App.scss';
 import ShoppingList from "./components/pages/ShoppingList"
 import Tasks from "./components/pages/Tasks"
-import NavBar from "./components/molecules/Navbar"
+import NavBar from "./components/molecules/NavBar"
 import React, {createContext} from "react";
 import {BrowserRouter, Routes, Route}  from "react-router-dom"
 import socketIOClient from "socket.io-client";
