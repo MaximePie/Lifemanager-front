@@ -1,10 +1,13 @@
 .Product {
+  border-top: 1px solid #61dafb;
+  padding: 0.25em;
 
-  margin: 1em;
-  border-bottom: 1px solid #61dafb;
+  display: grid;
+  grid-template-columns: 40px 40px 1fr 40px;
+  align-items: center;
 
   &--isOK {
-    color: green;
     font-weight: bold;
+    background-color: $successColor;
   }
 }
