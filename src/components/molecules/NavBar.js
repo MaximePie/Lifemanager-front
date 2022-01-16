@@ -6,6 +6,7 @@ export default function NavBar() {
     <div className="NavBar">
       <NavLink className="NavBar__link" to={"/shop"}>🛒</NavLink>
       <NavLink className="NavBar__link" to={"/tasks"}>✔️</NavLink>
+      <NavLink className="NavBar__link" to={"/events"}>🗓️️</NavLink>
     </div>
   )
 }

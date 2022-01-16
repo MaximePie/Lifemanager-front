@@ -1,6 +1,7 @@
 import './styles/App.scss';
 import ShoppingList from "./components/pages/ShoppingList"
 import Tasks from "./components/pages/Tasks"
+import Events from "./components/pages/Events"
 import NavBar from "./components/molecules/NavBar"
 import React, {createContext} from "react";
 import {BrowserRouter, Routes, Route}  from "react-router-dom"
@@ -19,6 +20,7 @@ function App() {
             <Route path={"/shop"} element={<ShoppingList/>}/>
             <Route path={"/"} element={<ShoppingList/>}/>
             <Route path={"/tasks"} element={<Tasks/>}/>
+            <Route path={"/events"} element={<Events/>}/>
           </Routes>
         </div>
       </socketContext.Provider>
