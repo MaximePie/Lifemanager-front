@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import NewTaskForm from "../molecules/NewTaskForm"
-import {getFromServer} from "../../server";
+import Task from "../molecules/Task"
+import {getFromServer, postOnServer} from "../../server";
 import {socketContext} from "../../App";
 
 export default function Tasks() {
@@ -13,14 +14,21 @@ export default function Tasks() {
     fetchTasks();
   }, []);
 
-
-
   return (
     <div className="Tasks">
       <NewTaskForm/>
-      {tasks.map((task, index) => <Tasks task={task} key={index}/>)}
+      {tasks.map((task, index) => <Task onDelete={deleteTask} onUpdate={updateTask} task={task} key={index}/>)}
     </div>
   );
+
+
+  function deleteTask(_id) {
+    postOnServer("/task/delete", {_id}).then(() => {})
+  }
+
+  function updateTask(_id, isOK) {
+    postOnServer("/task/updateCheckStatus", {_id, isOK}).then(() => {})
+  }
 
   function fetchTasks() {
     getFromServer('/tasks').then(({data}) => setTasks(data))

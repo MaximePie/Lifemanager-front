@@ -54,10 +54,6 @@ export default function ShoppingList() {
     postOnServer("/product/updateCheckStatus", {_id, isOK}).then(() => {})
   }
 
-  function deleteAllProducts() {
-    getFromServer("/products/deleteAll").then(() => {})
-  }
-
   function unCheckAll() {
     getFromServer("/products/uncheckAll").then(() => {})
   }
