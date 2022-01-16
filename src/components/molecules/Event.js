@@ -12,31 +12,37 @@ export default function Event({event, onDelete, onUpdate}) {
   return isEditMode ? (
       <div className={`Event`}>
         <button className="Event__button" onClick={() => {onDelete(_id)}}>🗑️</button>
-        <input
-          className="Event__name"
-          onChange={(e) => setNewEventName(e.target.value)}
-          value={newEventName}
-        />
-        <input
-          className="Event__participants"
-          onChange={e => setNewParticipants(e.target.value)}
-          value={newParticipants}
-        />
-        <input
-          className="Event__details"
-          onChange={e => setNewDetails(e.target.value)}
-          value={newDetails}
-        />
-        <button className="Event__editButton" onClick={() => setEditMode(false)}>❌️</button>
-        <button className="Event__editButton" onClick={saveNewEvent}>💾️</button>
+        <div>
+          <input
+            className="Event__name"
+            onChange={(e) => setNewEventName(e.target.value)}
+            value={newEventName}
+          />
+          <input
+            className="Event__participants"
+            onChange={e => setNewParticipants(e.target.value)}
+            value={newParticipants}
+          />
+          <input
+            className="Event__details"
+            onChange={e => setNewDetails(e.target.value)}
+            value={newDetails}
+          />
+        </div>
+        <div>
+          <button className="Event__editButton" onClick={() => setEditMode(false)}>❌️</button>
+          <button className="Event__editButton" onClick={saveNewEvent}>💾️</button>
+        </div>
       </div>
     )
     : (
     <div className={`Event`}>
       <button className="Event__button" onClick={() => {onDelete(_id)}}>🗑️</button>
-      <p className="Event__name">{eventName}</p>
-      <p className="Event__participants">{participants}</p>
-      <p className="Event__details">{details}</p>
+      <div>
+        <p className="Event__name">{eventName}</p>
+        <p className="Event__participants">{participants}</p>
+        <p className="Event__details">{details}</p>
+      </div>
       <button className="Event__editButton" onClick={() => setEditMode(true)}>🖊️</button>
     </div>
   )

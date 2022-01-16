@@ -41,6 +41,9 @@ export default function NewEventForm() {
     })
       .then(() => {
         console.log("Event Saved");
+        setDetails('');
+        setParticipants('');
+        setNewEvent('');
       })
   }
 }
