@@ -1,13 +1,4 @@
 .ShoppingList {
-  &__product {
-    margin: 1em;
-    border-bottom: 1px solid #61dafb;
-    &--isOK {
-      color: green;
-      font-weight: bold;
-    }
-  }
-
   &__delete-all {
     background-color: red;
   }

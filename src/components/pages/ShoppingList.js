@@ -18,19 +18,7 @@ export default function ShoppingList() {
 
   return (
     <div className="ShoppingList">
-      <ShoppingListHeader>
-
-      </ShoppingListHeader>
-      <h4>
-        Shopping List
-        <button className="ShoppingList__delete-all" onClick={deleteAllProducts}>
-          Supprimer tout
-        </button>
-        <button className="ShoppingList__uncheck-all" onClick={unCheckAll}>
-          Décocher tout
-        </button>
-      </h4>
-
+      <ShoppingListHeader onDeleteAll={deleteAllProducts} onUnCheckAll={unCheckAll}/>
       <NewProductForm/>
       {sortedArticles().map((product, index) => (
         <Product
