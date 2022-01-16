@@ -1,0 +1,22 @@
+.NewProductForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    margin-left: 0.5em;
+  }
+
+  &__saveButton {
+    width: 100px;
+  }
+
+  >* {
+    margin-top: 1em;
+  }
+
+  h4 {
+    margin: 0;
+  }
+}

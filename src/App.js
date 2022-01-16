@@ -1,7 +1,7 @@
-import './App.css';
+import './styles/App.scss';
 import ShoppingList from "./components/pages/ShoppingList"
 import Tasks from "./components/pages/Tasks"
-import Navbar from "./components/molecules/Navbar"
+import NavBar from "./components/molecules/Navbar"
 import React, {createContext} from "react";
 import {BrowserRouter, Routes, Route}  from "react-router-dom"
 import socketIOClient from "socket.io-client";
@@ -12,7 +12,7 @@ export const socketContext = createContext(socket);
 function App() {
   return (
     <BrowserRouter>
-      <Navbar/>
+      <NavBar/>
       <socketContext.Provider value={socket}>
         <div className="App">
           <Routes>
