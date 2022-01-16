@@ -3,6 +3,7 @@ $successColor: #b3ffb5;
 @import "pages/ShoppingList";
 @import "molecules/NewProductForm";
 @import "molecules/Product";
+@import "atoms/InputGroup";
 
 .App {
   text-align: center;
