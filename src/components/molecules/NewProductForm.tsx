@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { postOnServer } from '../../server';
 import InputGroup from '../atoms/InputGroup';
+import {Button} from "@mui/material";
 
 export default function NewProductForm() {
   const [name, setName] = useState<string>('');
@@ -23,13 +24,12 @@ export default function NewProductForm() {
         type="text"
         label="Quantité"
       />
-      <button
-        className="NewProductForm__saveButton"
+      <Button
+        variant="outlined"
         onClick={save}
-        type="button"
       >
         Enregistrer
-      </button>
+      </Button>
     </div>
   );
 
