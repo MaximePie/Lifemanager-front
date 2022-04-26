@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+
 $successColor: #b3ffb5;
 $dangerColor: #ffaba3;
 $primaryColor: #6ccdfb;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
 
 @import "pages/ShoppingList";
 @import "molecules/NewProductForm";
