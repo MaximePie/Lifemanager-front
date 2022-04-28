@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
+import { Button, TextField } from '@mui/material';
 import { postOnServer } from '../../server';
-import InputGroup from '../atoms/InputGroup';
-import {Button} from "@mui/material";
 
 export default function NewProductForm() {
   const [name, setName] = useState<string>('');
@@ -10,23 +9,34 @@ export default function NewProductForm() {
   return (
     <div className="NewProductForm">
       <h4>Ajouter un article</h4>
-
-      <InputGroup
+      <TextField
+        id="name"
+        label="Article"
+        variant="standard"
         onChange={updateName}
         value={name}
-        type="text"
-        label="Nom"
+        sx={{
+          margin: 1,
+        }}
       />
 
-      <InputGroup
+      <TextField
+        id="name"
+        label="Quantité"
+        variant="standard"
         onChange={updateQuantity}
         value={quantity}
-        type="text"
-        label="Quantité"
+        sx={{
+          margin: 1,
+        }}
       />
+
       <Button
         variant="outlined"
         onClick={save}
+        sx={{
+          margin: 2,
+        }}
       >
         Enregistrer
       </Button>
