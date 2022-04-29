@@ -1,3 +1,9 @@
+export const flex = `
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const colors = {
   success: '#b3ffb5',
   danger: '#ffaba3',

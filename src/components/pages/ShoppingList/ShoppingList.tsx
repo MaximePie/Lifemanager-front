@@ -4,8 +4,9 @@ import Product from '../../molecules/Product';
 import NewProductForm from '../../molecules/NewProductForm';
 import ShoppingListHeader from '../../molecules/ShoppingListHeader';
 import useShoppingList from './useShoppingList';
+import ShoppingList from './style';
 
-export default function ShoppingList() {
+export default function ShoppingListComponent() {
   const {
     articles,
     unCheckAll,
@@ -14,7 +15,7 @@ export default function ShoppingList() {
   } = useShoppingList();
 
   return (
-    <div className="ShoppingList">
+    <ShoppingList>
       <ShoppingListHeader onUnCheckAll={unCheckAll} />
       <NewProductForm />
       {articles.map((product) => (
@@ -25,6 +26,6 @@ export default function ShoppingList() {
           onDelete={deleteProduct}
         />
       ))}
-    </div>
+    </ShoppingList>
   );
 }
