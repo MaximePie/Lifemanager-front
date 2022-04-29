@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ObjectId } from 'bson';
+import { useQuery, useQueryClient } from 'react-query';
 import { socketContext } from '../../App';
 import { getFromServer, postOnServer } from '../../server';
 import Product from '../molecules/Product';
@@ -8,20 +9,22 @@ import ShoppingListHeader from '../molecules/ShoppingListHeader';
 import ProductType from '../../types/Product';
 
 export default function ShoppingList() {
+  const queryClient = useQueryClient();
+  const { data: articles } = useQuery<ProductType[], Error>('products', fetchArticles);
   const socket = useContext(socketContext);
 
-  const [articles, setArticles] = useState<ProductType[]>([]);
-
   useEffect(() => {
-    socket.on('articles list updated', fetchArticles);
-    fetchArticles();
+    socket.on(
+      'articles list updated',
+      () => queryClient.invalidateQueries('products'),
+    );
   }, []);
 
   return (
     <div className="ShoppingList">
       <ShoppingListHeader onUnCheckAll={unCheckAll} />
       <NewProductForm />
-      {sortedArticles().map((product) => (
+      {articles && sortedArticles().map((product) => (
         <Product
           product={product}
           key={product._id.toString()}
@@ -38,13 +41,11 @@ export default function ShoppingList() {
    * Sorting by : isOK
    */
   function sortedArticles() {
-    return articles.sort((article1) => (!article1.isOK ? -1 : 1));
+    return articles!.sort((article1) => (!article1.isOK ? -1 : 1));
   }
 
   function fetchArticles() {
-    getFromServer('/products').then(({ data }) => {
-      setArticles(data);
-    });
+    return getFromServer('/products').then(({ data }) => data);
   }
 
   function deleteProduct(_id: ObjectId) {
