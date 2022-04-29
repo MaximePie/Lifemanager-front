@@ -1,16 +1,25 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import ProductProps from './types';
+import useProduct from './useProduct';
 
-export default function ProductComponent({ product, onUpdate, onDelete }: ProductProps) {
+const Product = styled.div`
+width: 280px
+`;
+
+export default function ProductComponent(props: ProductProps) {
+  const { handleCheckboxClick, product, deleteProduct } = useProduct(props);
   const {
-    quantity, name, _id: id, isOK,
+    quantity,
+    name,
+    isOK,
   } = product;
 
   return (
-    <div className={`Product ${isOK && 'Product--isOK'}`}>
+    <Product className={`Product ${isOK && 'Product--isOK'}`}>
       <button
         className="Product__button"
-        onClick={() => { onDelete(id); }}
+        onClick={deleteProduct}
         type="button"
       >
         🗑️
@@ -22,10 +31,6 @@ export default function ProductComponent({ product, onUpdate, onDelete }: Produc
         onChange={handleCheckboxClick}
         checked={isOK}
       />
-    </div>
+    </Product>
   );
-
-  function handleCheckboxClick(event: ChangeEvent<HTMLInputElement>): void {
-    onUpdate(id, event.target.checked);
-  }
 }
