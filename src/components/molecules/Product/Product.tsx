@@ -1,12 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { ObjectId } from 'bson';
-import Product from '../../types/Product';
-
-type ProductProps = {
-  product: Product,
-  onUpdate: (id: ObjectId, checked: boolean) => void,
-  onDelete: (id: ObjectId) => void,
-}
+import ProductProps from './types';
 
 export default function ProductComponent({ product, onUpdate, onDelete }: ProductProps) {
   const {

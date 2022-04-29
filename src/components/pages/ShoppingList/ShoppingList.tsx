@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Product from '../../molecules/Product';
+import Product from '../../molecules/Product/Product';
 import NewProductForm from '../../molecules/NewProductForm';
 import ShoppingListHeader from '../../molecules/ShoppingListHeader';
 import useShoppingList from './useShoppingList';
