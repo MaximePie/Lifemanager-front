@@ -2,7 +2,7 @@ import React, { createContext, ReactElement } from 'react';
 import './styles/App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import socketIOClient from 'socket.io-client';
-import ShoppingList from './components/pages/ShoppingList';
+import ShoppingList from './components/pages/ShoppingList/ShoppingList';
 import Tasks from './components/pages/Tasks';
 import Events from './components/pages/Events';
 import NavBar from './components/molecules/NavBar';

@@ -1,14 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import { ObjectId } from 'bson';
 import { useQuery, useQueryClient } from 'react-query';
-import { socketContext } from '../../App';
-import { getFromServer, postOnServer } from '../../server';
-import Product from '../molecules/Product';
-import NewProductForm from '../molecules/NewProductForm';
-import ShoppingListHeader from '../molecules/ShoppingListHeader';
-import ProductType from '../../types/Product';
+import { useContext, useEffect } from 'react';
+import { ObjectId } from 'bson';
+import ProductType from '../../../types/Product';
+import { socketContext } from '../../../App';
+import { getFromServer, postOnServer } from '../../../server';
 
-export default function ShoppingList() {
+export default function useShoppingList() {
   const queryClient = useQueryClient();
   const { data: articles } = useQuery<ProductType[], Error>('products', fetchArticles);
   const socket = useContext(socketContext);
@@ -20,28 +17,13 @@ export default function ShoppingList() {
     );
   }, []);
 
-  return (
-    <div className="ShoppingList">
-      <ShoppingListHeader onUnCheckAll={unCheckAll} />
-      <NewProductForm />
-      {articles && sortedArticles().map((product) => (
-        <Product
-          product={product}
-          key={product._id.toString()}
-          onUpdate={updateCheckStatus}
-          onDelete={deleteProduct}
-        />
-      ))}
-    </div>
-  );
-
   /**
    * Sort the articles in the articles state
    * and return it.
    * Sorting by : isOK
    */
   function sortedArticles() {
-    return articles!.sort((article1) => (!article1.isOK ? -1 : 1));
+    return articles?.sort((article1) => (!article1.isOK ? -1 : 1)) || [];
   }
 
   function fetchArticles() {
@@ -59,4 +41,8 @@ export default function ShoppingList() {
   function unCheckAll() {
     getFromServer('/products/uncheckAll').then(() => {});
   }
+
+  return {
+    articles: sortedArticles(), unCheckAll, updateCheckStatus, deleteProduct,
+  };
 }
