@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ObjectId } from 'bson';
 import NewTaskForm from '../../molecules/NewTaskForm/NewTaskForm';
-import Task from '../../molecules/Task';
+import Task from '../../molecules/Task/Task';
 import { getFromServer, postOnServer } from '../../../server';
 import { socketContext } from '../../../App';
 import TaskType from '../../../types/Task';
