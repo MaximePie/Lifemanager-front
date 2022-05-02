@@ -1,15 +1,16 @@
 import moment from 'moment';
 import React from 'react';
-import { TaskProps, FormatedTask } from './types';
+import { TaskProps, FormattedTask } from './types';
 
 export default function useTask({ task, onDelete, onUpdate }: TaskProps) {
-  const formatedTask: FormatedTask = {
+  const {
+    isOK, repetitionDelay: delay, _id, lastTimeDone,
+  } = task;
+
+  const formatedTask: FormattedTask = {
     ...task,
     remainingDays: getRemainingDays(),
   };
-  const {
-    isOK, repetitionDelay: delay, _id, lastTimeDone,
-  } = formatedTask;
 
   function getRemainingDays(): number | undefined {
     if (isOK && delay) {

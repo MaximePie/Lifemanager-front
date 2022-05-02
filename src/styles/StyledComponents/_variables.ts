@@ -1,4 +1,4 @@
-export const flex = `
+const flex = `
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,4 +16,4 @@ const spacings = {
   big: '2em',
 };
 
-export { colors, spacings };
+export { colors, spacings, flex };

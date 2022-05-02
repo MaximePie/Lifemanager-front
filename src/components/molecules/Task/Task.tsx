@@ -1,4 +1,5 @@
 import React from 'react';
+import StyledTask from './styles';
 import { TaskProps } from './types';
 import useTask from './useTask';
 
@@ -12,7 +13,7 @@ export default function TaskComponent(props: TaskProps) {
   } = useTask(props);
 
   return (
-    <div className={`Task ${isOK && 'Task--isOK'}`}>
+    <StyledTask isOK={isOK}>
       <button
         className="Task__button"
         onClick={onDeleteClick}
@@ -31,6 +32,6 @@ export default function TaskComponent(props: TaskProps) {
         onChange={onTick}
         checked={isOK}
       />
-    </div>
+    </StyledTask>
   );
 }
