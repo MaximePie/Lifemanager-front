@@ -1,5 +1,6 @@
 import React from 'react';
 import { ObjectId } from 'bson';
+import moment from 'moment';
 import Task from '../../types/Task';
 
 type TaskProps = {
@@ -9,7 +10,11 @@ type TaskProps = {
 }
 
 export default function TaskComponent({ task, onDelete, onUpdate }: TaskProps) {
-  const { name, _id, isOK } = task;
+  const {
+    name, _id, isOK, repetitionDelay: delay, lastTimeDone,
+  } = task;
+
+  const remainingDays = getRemainingDays();
 
   return (
     <div className={`Task ${isOK && 'Task--isOK'}`}>
@@ -20,7 +25,12 @@ export default function TaskComponent({ task, onDelete, onUpdate }: TaskProps) {
       >
         🗑️
       </button>
-      <p className="Task__name">{name}</p>
+      <p className="Task__name">
+        {name}
+        {' '}
+        {delay && `(${delay}J)`}
+        {remainingDays && `(${remainingDays})`}
+      </p>
       <input
         type="checkbox"
         onChange={onTick}
@@ -28,6 +38,13 @@ export default function TaskComponent({ task, onDelete, onUpdate }: TaskProps) {
       />
     </div>
   );
+
+  function getRemainingDays(): number | undefined {
+    if (isOK && delay) {
+      return delay - moment().diff(lastTimeDone, 'd');
+    }
+    return undefined;
+  }
 
   function onDeleteClick() {
     onDelete(_id);

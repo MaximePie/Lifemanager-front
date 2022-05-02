@@ -10,6 +10,8 @@ export default function Tasks() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const socket = useContext(socketContext);
 
+  const sortedTasks = tasks.sort((task1) => (task1.isOK ? 1 : -1));
+
   useEffect(() => {
     socket.on('tasks list updated', fetchTasks);
     fetchTasks();
@@ -18,7 +20,7 @@ export default function Tasks() {
   return (
     <div className="Tasks">
       <NewTaskForm />
-      {tasks.map((task) => (
+      {sortedTasks.map((task) => (
         <Task onDelete={deleteTask} onUpdate={updateTask} task={task} key={task._id.toString()} />
       ))}
     </div>
