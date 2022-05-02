@@ -1,6 +1,5 @@
 import React from 'react';
-import { IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import StyledTask from './styles';
 import { TaskProps } from './types';
 import useTask from './useTask';
@@ -18,12 +17,22 @@ export default function TaskComponent(props: TaskProps) {
   return (
     <StyledTask isOK={isOK}>
       <DeleteButton onClick={onDeleteClick} />
-      <p className="Task__name">
-        {name}
-        {' '}
-        {delay && `(${delay}J)`}
-        {remainingDays && `(${remainingDays})`}
-      </p>
+      <div className="Task__name">
+        <p>
+          {name}
+          {remainingDays && `(${remainingDays})`}
+        </p>
+        {delay && (
+          <span>
+            <HourglassBottomIcon
+              color="primary"
+              fontSize="small"
+            />
+            {delay}
+            J
+          </span>
+        )}
+      </div>
       <input
         type="checkbox"
         onChange={onTick}
