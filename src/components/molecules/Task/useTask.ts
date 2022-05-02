@@ -7,16 +7,24 @@ export default function useTask({ task, onDelete, onUpdate }: TaskProps) {
     isOK, repetitionDelay: delay, _id, lastTimeDone,
   } = task;
 
-  const formatedTask: FormattedTask = {
+  const formattedTask: FormattedTask = {
     ...task,
-    remainingDays: getRemainingDays(),
+    remainingTime: getRemainingTime(),
   };
 
-  function getRemainingDays(): number | undefined {
+  /**
+   * Returns the remaining time in days or in hours
+   */
+  function getRemainingTime(): string {
     if (isOK && delay) {
-      return delay - moment().diff(lastTimeDone, 'd');
+      const remainingDays = delay - moment().diff(moment(lastTimeDone), 'd');
+      if (remainingDays === 0) {
+        const remainingHours = delay * 24 - moment().diff(moment(lastTimeDone), 'h');
+        return `${remainingHours}h`;
+      }
+      return `${remainingDays}j`;
     }
-    return undefined;
+    return '';
   }
 
   function onDeleteClick() {
@@ -27,5 +35,5 @@ export default function useTask({ task, onDelete, onUpdate }: TaskProps) {
     onUpdate(_id, event.target.checked);
   }
 
-  return { formattedTask: formatedTask, onDeleteClick, onTick };
+  return { formattedTask, onDeleteClick, onTick };
 }

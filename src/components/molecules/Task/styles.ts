@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../../styles/StyledComponents/_variables';
+import { colors, flex, spacings } from '../../../styles/StyledComponents/_variables';
 import { StyledTaskProps } from './types';
 
 function addOkState(props: StyledTaskProps): string {
@@ -15,6 +15,8 @@ function addOkState(props: StyledTaskProps): string {
 const StyledTask = styled.div<StyledTaskProps>`
   border-top: 1px solid #61dafb;
   padding: 0.25em;
+  width: 800px;
+  margin: auto;
 
   display: grid;
   grid-template-columns: 40px 1fr 40px;
@@ -25,4 +27,14 @@ const StyledTask = styled.div<StyledTaskProps>`
   ${addOkState}
 `;
 
-export default StyledTask;
+const Details = styled.div`
+display: inline-block
+`;
+
+const Detail = styled.span`
+margin-right: ${spacings.medium};
+
+display: inline-flex;
+`;
+
+export { StyledTask, Detail, Details };

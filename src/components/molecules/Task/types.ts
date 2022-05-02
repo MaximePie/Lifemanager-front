@@ -2,7 +2,7 @@ import { ObjectId } from 'bson';
 import Task from '../../../types/Task';
 
 export type FormattedTask = Task & {
-  remainingDays?: number
+  remainingTime?: string
 }
 
 export type TaskProps = {

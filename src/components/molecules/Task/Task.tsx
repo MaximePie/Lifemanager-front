@@ -1,6 +1,6 @@
 import React from 'react';
-import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
-import StyledTask from './styles';
+import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTone'; import SyncTwoToneIcon from '@mui/icons-material/SyncTwoTone';
+import { StyledTask, Detail, Details } from './styles';
 import { TaskProps } from './types';
 import useTask from './useTask';
 import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
@@ -8,7 +8,7 @@ import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
 export default function TaskComponent(props: TaskProps) {
   const {
     formattedTask: {
-      name, isOK, repetitionDelay: delay, remainingDays,
+      name, isOK, repetitionDelay: delay, remainingTime,
     },
     onDeleteClick,
     onTick,
@@ -20,18 +20,28 @@ export default function TaskComponent(props: TaskProps) {
       <div className="Task__name">
         <p>
           {name}
-          {remainingDays && `(${remainingDays})`}
         </p>
-        {delay && (
-          <span>
-            <HourglassBottomIcon
-              color="primary"
-              fontSize="small"
-            />
-            {delay}
-            J
-          </span>
-        )}
+        <Details>
+          {delay && (
+            <Detail>
+              <SyncTwoToneIcon
+                color="primary"
+                fontSize="small"
+              />
+              {delay}
+              J
+            </Detail>
+          )}
+          {remainingTime !== undefined && (
+            <Detail>
+              <HourglassBottomTwoToneIcon
+                color="warning"
+                fontSize="small"
+              />
+              {remainingTime}
+            </Detail>
+          )}
+        </Details>
       </div>
       <input
         type="checkbox"
