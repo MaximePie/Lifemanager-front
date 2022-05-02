@@ -1,4 +1,6 @@
 import React from 'react';
+import { IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import StyledTask from './styles';
 import { TaskProps } from './types';
 import useTask from './useTask';
@@ -14,13 +16,13 @@ export default function TaskComponent(props: TaskProps) {
 
   return (
     <StyledTask isOK={isOK}>
-      <button
-        className="Task__button"
+      <IconButton
+        aria-label="delete"
         onClick={onDeleteClick}
-        type="button"
+        color="error"
       >
-        🗑️
-      </button>
+        <DeleteIcon />
+      </IconButton>
       <p className="Task__name">
         {name}
         {' '}
