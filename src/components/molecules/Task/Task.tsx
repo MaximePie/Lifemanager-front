@@ -32,7 +32,7 @@ export default function TaskComponent(props: TaskProps) {
               J
             </Detail>
           )}
-          {remainingTime !== undefined && (
+          {remainingTime !== '' && (
             <Detail>
               <HourglassBottomTwoToneIcon
                 color="warning"

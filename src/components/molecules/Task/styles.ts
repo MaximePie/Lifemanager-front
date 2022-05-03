@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, flex, spacings } from '../../../styles/StyledComponents/_variables';
+import { colors, spacings } from '../../../styles/StyledComponents/_variables';
 import { StyledTaskProps } from './types';
 
 function addOkState(props: StyledTaskProps): string {
