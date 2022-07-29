@@ -23,7 +23,7 @@ module.exports = {
     'linebreak-style': 'off',
     'prefer-destructuring': 'off',
     'no-use-before-define': 'off',
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/jsx-filename-extension': [2, {extensions: ['.js', '.jsx', '.ts', '.tsx']}],
     'import/extensions': 'off',
     'no-underscore-dangle': 'off',
     'jsx-a11y/label-has-associated-control': [2, {

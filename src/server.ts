@@ -8,6 +8,12 @@ export function getFromServer(path: string) {
   return axiosInstance.get(path);
 }
 
+/**
+ * Que fait la fonction ?
+ * @param path {string} - Le chemin d'accès à notre BD
+ * @param body
+ * @return La promesse
+ */
 export function postOnServer(path: string, body: any) {
   return axiosInstance.post(path, body);
 }

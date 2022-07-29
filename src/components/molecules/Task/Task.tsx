@@ -1,5 +1,6 @@
 import React from 'react';
-import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTone'; import SyncTwoToneIcon from '@mui/icons-material/SyncTwoTone';
+import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTone';
+import SyncTwoToneIcon from '@mui/icons-material/SyncTwoTone';
 import { StyledTask, Detail, Details } from './styles';
 import { TaskProps } from './types';
 import useTask from './useTask';

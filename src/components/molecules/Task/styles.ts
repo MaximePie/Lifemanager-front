@@ -24,7 +24,11 @@ const StyledTask = styled.div<StyledTaskProps>`
 
   align-items: center;
   
-  ${addOkState}
+  ${addOkState};
+
+  @media (max-width: 400px) {
+    max-width: 360px;
+  }
 `;
 
 const Details = styled.div`
