@@ -1,21 +1,15 @@
 import { useQuery, useQueryClient } from 'react-query';
-import { useContext, useEffect } from 'react';
 import { ObjectId } from 'bson';
 import ProductType from '../../../types/Product';
-import { socketContext } from '../../../App';
 import { getFromServer, postOnServer } from '../../../server';
 
 export default function useShoppingList() {
   const queryClient = useQueryClient();
   const { data: articles } = useQuery<ProductType[], Error>('products', fetchArticles);
-  const socket = useContext(socketContext);
 
-  useEffect(() => {
-    socket.on(
-      'articles list updated',
-      () => queryClient.invalidateQueries('products'),
-    );
-  }, []);
+  function refetch() {
+    queryClient.invalidateQueries('products');
+  }
 
   /**
    * Sort the articles in the articles state
@@ -31,11 +25,11 @@ export default function useShoppingList() {
   }
 
   function deleteProduct(_id: ObjectId) {
-    postOnServer('/product/delete', { _id }).then(() => {});
+    postOnServer('/product/delete', { _id }).then(refetch);
   }
 
   function updateCheckStatus(_id: ObjectId, isOK: boolean) {
-    postOnServer('/product/updateCheckStatus', { _id, isOK }).then(() => {});
+    postOnServer('/product/updateCheckStatus', { _id, isOK }).then(refetch);
   }
 
   function unCheckAll() {
@@ -43,6 +37,9 @@ export default function useShoppingList() {
   }
 
   return {
-    articles: sortedArticles(), unCheckAll, updateCheckStatus, deleteProduct,
+    articles: sortedArticles(),
+    unCheckAll,
+    updateCheckStatus,
+    deleteProduct,
   };
 }

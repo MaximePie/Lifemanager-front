@@ -20,7 +20,7 @@ export default function ShoppingListComponent() {
       <NewProductForm />
       {articles.map((product) => (
         <Product
-          product={product}
+          initialProduct={product}
           key={product._id.toString()}
           onUpdate={updateCheckStatus}
           onDelete={deleteProduct}
