@@ -7,7 +7,7 @@ import { getFromServer, postOnServer } from '../../../server';
 
 export default function useShoppingList() {
   const queryClient = useQueryClient();
-  const { data: articles } = useQuery<ProductType[], Error>('products', fetchArticles);
+  const { data: articles, error, isLoading } = useQuery<ProductType[], Error>('products', fetchArticles);
   const socket = useContext(socketContext);
 
   useEffect(() => {
@@ -43,6 +43,7 @@ export default function useShoppingList() {
   }
 
   return {
-    articles: sortedArticles(), unCheckAll, updateCheckStatus, deleteProduct,
+    articles: sortedArticles(), unCheckAll, updateCheckStatus, deleteProduct, error,
+    isLoading
   };
 }

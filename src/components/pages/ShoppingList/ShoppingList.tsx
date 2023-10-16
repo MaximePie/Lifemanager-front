@@ -12,12 +12,16 @@ export default function ShoppingListComponent() {
     unCheckAll,
     updateCheckStatus,
     deleteProduct,
+    isLoading,
+    error
   } = useShoppingList();
 
   return (
     <ShoppingList>
       <ShoppingListHeader onUnCheckAll={unCheckAll} />
       <NewProductForm />
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Something went wrong ... {JSON.stringify(error)}</div>}
       {articles.map((product) => (
         <Product
           product={product}

@@ -18,10 +18,9 @@ function App(): ReactElement {
       <socketContext.Provider value={socket}>
         <div className="App">
           <Routes>
-            <Route path="/shop" element={<ShoppingList />} />
             <Route path="/" element={<ShoppingList />} />
+            <Route path="/shop" element={<ShoppingList />} />
             <Route path="/tasks" element={<Tasks />} />
-            <Route path="/events" element={<Events />} />
           </Routes>
         </div>
       </socketContext.Provider>
