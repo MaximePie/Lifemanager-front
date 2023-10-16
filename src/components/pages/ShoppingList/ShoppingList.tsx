@@ -24,7 +24,7 @@ export default function ShoppingListComponent() {
       {error && <div>Something went wrong ... {JSON.stringify(error)}</div>}
       {articles.map((product) => (
         <Product
-          product={product}
+          initialProduct={product}
           key={product._id.toString()}
           onUpdate={updateCheckStatus}
           onDelete={deleteProduct}
